@@ -1,3 +1,4 @@
+from typing import ValuesView
 from .forms import SignUpForm
 from django.db.models.fields import SlugField
 from django.shortcuts import render
@@ -26,9 +27,9 @@ def home(request):
     return render(request, 'home.html')
 
 def detail(request, pk):
-    entry = UserEntries.objects.get(id=pk)
+    future = UserEntries.objects.get(id=pk)
     return render(request, 'profile/detail.html',{
-        'entry': entry
+        'future': future
     })
 
 def signup(request):
@@ -76,7 +77,8 @@ class Profile(LoginRequiredMixin, ListView):
 
 class EntryCreate(LoginRequiredMixin, CreateView):
     model = UserEntries
-    fields = ('title', 'entry', 'img', 'video', 'tags')
+    fields = ('future','title', 'tags', 'optional_video')
+ 
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -87,8 +89,7 @@ class EntryCreate(LoginRequiredMixin, CreateView):
 class EntryUpdate(LoginRequiredMixin, UpdateView):
   model = UserEntries
   # Let's disallow the renaming of a cat by excluding the name field!
-  fields = ['title', 'entry', 'img', 'video', 'tags'  ]
-
+  fields = ['future','title', 'tags', 'optional_video']
 class EntryDelete(LoginRequiredMixin, DeleteView):
     model = UserEntries
     success_url = '/profile/'

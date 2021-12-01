@@ -1,19 +1,21 @@
 from django import forms
 from .models import UserEntries
 
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = UserEntries
         fields = [
+            'future',
             'title',
-            'entry',
             'tags',
-            'video',
+            # 'optional_image',
+            'optional_video',
         ]
 
-from django.forms import ModelForm
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+
 
 class SignUpForm(UserCreationForm):
   email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')

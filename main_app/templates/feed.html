@@ -11,16 +11,14 @@
     <div class="card">
         <a href="{% url 'detail' post.id %}">
             <div>
-                <h4>{{ post.title }}</h4>
+                <h4>{{ post.title_of_this_future }}</h4>
                 <p>Created on {{ post.date }} by {{post.user}}</p></a>
-               <p>{{post.entry}}</p>
+               <p>{{post.In_the_future}}</p>
            
                 {% for tag in post.tags.all %}
               <a href="{% url 'posts_by_tag' tag.slug %}"> {{ tag.name }}</a>
                 {% endfor %}
-         
-             
-             
+        
             </div>
         
     </div>

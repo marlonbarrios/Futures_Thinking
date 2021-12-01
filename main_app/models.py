@@ -5,21 +5,21 @@ from embed_video.fields import EmbedVideoField
 from taggit.managers import TaggableManager
 
 
-class UserEntries(models.Model):
-    title = models.CharField(max_length=100)
-    entry = models.CharField(max_length=350)
-    tags = TaggableManager()
-    # slug = models.SlugField(unique=True, max_length=100)
-    img = models.CharField(max_length=250, blank=True)
-    video = EmbedVideoField(blank=True)
-    date = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
+class UserEntries(models.Model):
+     future = models.CharField(max_length=350)
+     title = models.CharField(max_length=100)
+     tags = TaggableManager()
+     optional_image = models.CharField(max_length=250, blank=True)
+     optional_video = EmbedVideoField(blank=True)
+     date = models.DateTimeField(auto_now=True)
+     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+     def __str__(self):
         return self.title
         # return f"{self.title} was created on {self.date} with the id of {self.id}"
 
-    def get_absolute_url(self):
+     def get_absolute_url(self):
         return reverse("detail", kwargs={"pk": self.id})
     
 
