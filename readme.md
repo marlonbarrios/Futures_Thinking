@@ -54,14 +54,14 @@ After authentication, the user can  create, read a stream of ideas of all users 
 ### Development Team:
 
 
-Marlon Barrios Solano
+Marlon Barrios Solano (USA)
 
 https://github.com/marlonbarrios
 
-Raimundo Llao
+Raimundo Llao (Chile)
 
 
-Tyler Rice
+Tyler Rice (USA)
 
 https://github.com/tylerrice121
 
